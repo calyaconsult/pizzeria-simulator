@@ -159,6 +159,7 @@ open simple/index.html
 open with-demand-curve/index.html
 
 No npm install. No webpack. No build step. Just open and play. 🎮
+```
 
 💡 Possible Extensions
 
