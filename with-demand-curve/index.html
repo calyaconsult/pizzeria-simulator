@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍕 Pizzeria Manager Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+<style></style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🍕 Pizzeria da Simone — Manager Dashboard</h1>
+  <p>Track orders, inventory, and revenue across a full business day — 11:00 to 23:00</p>
+</div>
+
+<div class="controls">
+  <button class="btn btn-reset" onclick="resetSimulation()">🔄 New Day</button>
+  <button class="btn btn-next" id="btnNext" onclick="nextRound()">▶️ Next Round</button>
+  <button class="btn btn-settings" onclick="openSettings()">⚙️ Settings</button>
+</div>
+
+<!-- BANNERS -->
+<div class="banner stock-out" id="bannerStockOut">
+  🚫 Kitchen closed — not enough ingredients to make any pizza!
+</div>
+<div class="banner day-over" id="bannerDayOver">
+  🎉 Day Complete — Great shift, Manager!
+  <div class="banner-stats" id="dayOverStats"></div>
+</div>
+
+<!-- DEMAND CURVE -->
+<div class="demand-panel">
+  <h2>📈 Demand Forecast</h2>
+  <div class="demand-phase" id="demandPhase">Press <b>Next Round</b> to open the doors at 11:00.</div>
+  <div class="demand-bars-wrap" id="demandBars"></div>
+  <div class="demand-labels" id="demandLabels"></div>
+</div>
+
+<!-- KPI BAR -->
+<div class="kpi-bar">
+  <div class="kpi-card" id="kpiClock">
+    <div class="kpi-label">🕐 Clock</div>
+    <div class="kpi-value" id="vClock">11:00</div>
+  </div>
+  <div class="kpi-card" id="kpiRound">
+    <div class="kpi-label">Round</div>
+    <div class="kpi-value" id="vRound">0 / 48</div>
+  </div>
+  <div class="kpi-card" id="kpiPhase">
+    <div class="kpi-label">Phase</div>
+    <div class="kpi-value phase" id="vPhase">—</div>
+  </div>
+  <div class="kpi-card" id="kpiRevenue">
+    <div class="kpi-label">Total Revenue</div>
+    <div class="kpi-value money" id="vRevenue">CHF 0.00</div>
+  </div>
+  <div class="kpi-card" id="kpiServed">
+    <div class="kpi-label">Served</div>
+    <div class="kpi-value" id="vServed">0</div>
+  </div>
+  <div class="kpi-card" id="kpiLost">
+    <div class="kpi-label">Lost</div>
+    <div class="kpi-value bad" id="vLost">0</div>
+  </div>
+  <div class="kpi-card" id="kpiAvg">
+    <div class="kpi-label">Avg Order</div>
+    <div class="kpi-value money" id="vAvg">CHF 0.00</div>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-grid">
+  <div class="panel">
+    <h2>📦 Inventory</h2>
+    <div class="inv-grid" id="inventoryGrid"></div>
+  </div>
+  <div class="panel">
+    <h2>🧾 Current Round Orders</h2>
+    <div id="roundInfo" style="margin-bottom:12px;font-size:0.9rem;color:#90a4ae;">
+      Waiting for the first customers...
+    </div>
+    <div class="orders-list" id="ordersList"></div>
+  </div>
+  <div class="panel">
+    <h2>📋 Menu Availability</h2>
+    <h3 style="font-size:0.8rem;color:#90a4ae;margin-bottom:10px;">PIZZAS</h3>
+    <div class="menu-grid" id="menuPizzas"></div>
+    <h3 style="font-size:0.8rem;color:#90a4ae;margin:14px 0 10px;">DRINKS</h3>
+    <div class="menu-grid" id="menuDrinks"></div>
+  </div>
+  <div class="panel">
+    <h2>📊 Round History</h2>
+    <div class="history-scroll">
+      <table class="history-table">
+        <thead><tr><th>#</th><th>Time</th><th>Phase</th><th>Cust.</th><th>Revenue</th><th>Cumul.</th></tr></thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-box">
+    <h2>⚙️ Simulation Settings</h2>
+    <div class="settings-grid">
+      <div class="settings-section">Customers (base range, scaled by demand curve)</div>
+      <label>Base min per round <input type="number" id="sMinCust" min="0" max="20"></label>
+      <label>Base max per round <input type="number" id="sMaxCust" min="1" max="30"></label>
+      <label>Drink probability (0–1) <input type="number" id="sDrinkProb" min="0" max="1" step="0.05"></label>
+      <div class="settings-section">Inventory — Ingredients (grams)</div>
+      <label>Flour <input type="number" id="sFlour" step="1000"></label>
+      <label>Sauce <input type="number" id="sSauce" step="500"></label>
+      <label>Cheese <input type="number" id="sCheese" step="500"></label>
+      <label>Salami <input type="number" id="sSalami" step="500"></label>
+      <label>Ham <input type="number" id="sHam" step="500"></label>
+      <label>Vegetables <input type="number" id="sVegetables" step="500"></label>
+      <label>Tuna <input type="number" id="sTuna" step="500"></label>
+      <div class="settings-section">Inventory — Drinks (bottles)</div>
+      <label>Cola <input type="number" id="sCola"></label>
+      <label>Fanta <input type="number" id="sFanta"></label>
+      <label>Water <input type="number" id="sWater"></label>
+      <label>Beer <input type="number" id="sBeer"></label>
+      <label>House Wine <input type="number" id="sWine"></label>
+    </div>
+    <div class="settings-actions">
+      <button class="btn btn-cancel" onclick="closeSettings()">Cancel</button>
+      <button class="btn btn-save" onclick="saveSettings()">💾 Save & New Day</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
