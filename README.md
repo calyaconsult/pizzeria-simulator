@@ -10,7 +10,7 @@ Built as a single self-contained HTML file (no dependencies, no build step), thi
 
 ## 🎮 Live Demo
 
-Simply open the HTML file in any modern browser — no server required:
+Download and simply open the HTML file in any modern browser — no server required:
 
 - **Simple version:** [`simple-standalone.html`](simple-standalone.html)
 - **With demand curve:** [`with-demand-curve-standalone.html`](with-demand-curve-standalone.html)
