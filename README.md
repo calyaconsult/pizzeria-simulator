@@ -161,17 +161,24 @@ open with-demand-curve/index.html
 No npm install. No webpack. No build step. Just open and play. 🎮
 ```
 
-💡 Possible Extensions
+💡 **Possible Extensions**
 
 💰 Cost & Profit Tracking — Add ingredient costs to compute gross margin per round
+
 📦 Restock Mechanic — Mid-day restocking with delivery delay and cost
+
 📈 Charts — Revenue curve and inventory depletion over time (e.g., with Chart.js)
+
 🏆 Scoring System — End-of-day performance score based on customers served, profit, and uptime
+
 👨‍🍳 Oven Capacity — Max pizzas per round as a throughput constraint
+
 📊 Monte Carlo Mode — Auto-run 1,000 days and show statistical distributions of outcomes
+
 🎯 Weighted Menu Preferences — Margherita ordered 3× more often than Tonno
 
-🧰 Tech Stack
+
+🧰 **Tech Stack**
 
 **Markup & Layout:** HTML5
 
