@@ -82,7 +82,7 @@ The simulation follows a straightforward **state-update loop**:
 │  4. Add prices to revenue         │
 │  5. Check for stock-outs          │
 │  6. Update dashboard              │
-└──────────────────────────────────┘
+└───────────────────────────────────┘
 ```
 
 ### Key Design Principles
