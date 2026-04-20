@@ -197,7 +197,7 @@ Built with the help of Swisscom myAI as an exercise in interactive business proc
 ---
 
 ## 📁 Suggested Structure
-
+```
 pizzeria-simulator/
 ├── README.md
 ├── LICENSE
@@ -213,3 +213,4 @@ pizzeria-simulator/
     │   └── style.css
     └── js
         └── script.js
+```
