@@ -61,10 +61,11 @@ Everything in the simple version, plus a realistic time-of-day demand model.
 ## 🏗️ How It Works
 
 The simulation follows a straightforward **state-update loop**:
+```
 
 ┌─────────────────────────────────────────────────┐
-│                  SYSTEM STATE                    │
-│   💰 Revenue    📦 Inventory    👥 Customers     │
+│                  SYSTEM STATE                   │
+│   💰 Revenue    📦 Inventory    👥 Customers   │
 └────────────────────┬────────────────────────────┘
 │
 ┌─────────▼──────────┐
@@ -82,6 +83,7 @@ The simulation follows a straightforward **state-update loop**:
 │  5. Check for stock-outs          │
 │  6. Update dashboard              │
 └──────────────────────────────────┘
+```
 
 ### Key Design Principles
 
