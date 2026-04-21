@@ -10,7 +10,9 @@ Built as a single self-contained HTML file (no dependencies, no build step), thi
 
 ## 🎮 Live Demo
 
-Download and simply open the HTML file in any modern browser — no server required:
+Play the [Online Version](https://dashboards.site5001.ch/ccch-showcases/pizzeria-simulator/)
+
+Or download and simply open the HTML file in any modern browser — no server required:
 
 - **Simple version:** [`simple-standalone.html`](simple-standalone.html)
 - **With demand curve:** [`with-demand-curve-standalone.html`](with-demand-curve-standalone.html)
