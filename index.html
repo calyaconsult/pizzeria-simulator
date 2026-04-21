@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Virtual Pizzeria - A Simulation Game - Site 5001</title>
+    <meta name="description" content="The Virtual Pizzeria — a browser-based simulation game that puts you in the manager's seat. Track orders, inventory, and revenue in real time. Choose simple or demand-curve mode.">
+    <style>
+       body {
+         padding: 2rem;
+         background: #1a1a2e;
+         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+       }
+       #imagecontainer {
+         max-width: 1600px;
+       }
+       #imagecontainer img {
+         width: 100%;
+         height: auto;
+         display: block;
+       }
+       .button-container {
+         display: flex;
+         gap: 20px;
+         margin-bottom: 2rem;
+         max-width: 1600px;
+         flex-wrap: wrap;
+       }
+       .btn {
+         display: inline-flex;
+         align-items: center;
+         gap: 12px;
+         padding: 18px 36px;
+         font-size: 1.1rem;
+         font-weight: 600;
+         color: #fff;
+         text-decoration: none;
+         border-radius: 12px;
+         transition: all 0.2s;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+       }
+       .btn:hover {
+         transform: translateY(-3px);
+         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+       }
+       .btn:active {
+         transform: translateY(0);
+       }
+       .btn-simple {
+         background: linear-gradient(135deg, #43a047, #2e7d32);
+       }
+       .btn-simple:hover {
+         background: linear-gradient(135deg, #4caf50, #388e3c);
+       }
+       .btn-demand {
+         background: linear-gradient(135deg, #e65100, #bf360c);
+       }
+       .btn-demand:hover {
+         background: linear-gradient(135deg, #f57c00, #d84315);
+       }
+       .btn span.emoji {
+         font-size: 1.4rem;
+       }
+       .btn .label small {
+         display: block;
+         font-weight: 400;
+         font-size: 0.78rem;
+         opacity: 0.85;
+         margin-top: 2px;
+       }
+    </style>
+  </head>
+  <body>
+    <div class="button-container">
+      <a href="simple/" class="btn btn-simple">
+        <span class="emoji">🍕</span>
+        <span class="label">Simple Mode<small>Flat arrival rate — great for learning the basics</small></span>
+      </a>
+      <a href="with-demand-curve/" class="btn btn-demand">
+        <span class="emoji">📈</span>
+        <span class="label">With Demand Curve<small>Realistic lunch &amp; dinner rushes across a full day</small></span>
+      </a>
+    </div>
+    <div id="imagecontainer">
+      <img src="the-virtual-pizzeria.jpg" alt="Logo of The Virtual Pizzeria">
+    </div>
+  </body>
+</html>
